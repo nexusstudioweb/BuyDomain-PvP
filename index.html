@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KNB PvP</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #0f172a; /* Темно-синий */
+            color: #f1f5f9;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .status {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+        .game-area {
+            display: flex;
+            gap: 15px;
+        }
+        .card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 2px solid #334155; /* Серебряный акцент */
+            border-radius: 12px;
+            padding: 20px;
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:active {
+            transform: scale(0.9);
+            border-color: #6366f1;
+        }
+        .emoji {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .label {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Твой ход</h2>
+        <div class="status">Ожидание соперника...</div>
+    </div>
+
+    <div class="game-area">
+        <div class="card" onclick="makeMove('rock')">
+            <span class="emoji">✊</span>
+            <span class="label">Камень</span>
+        </div>
+        <div class="card" onclick="makeMove('scissors')">
+            <span class="emoji">✌️</span>
+            <span class="label">Ножницы</span>
+        </div>
+        <div class="card" onclick="makeMove('paper')">
+            <span class="emoji">✋</span>
+            <span class="label">Бумага</span>
+        </div>
+    </div>
+
+    <div class="footer">MVP v0.1 | @BuyDomain_BOT style</div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Расширить на весь экран
+
+        function makeMove(choice) {
+            tg.HapticFeedback.impactOccurred('medium'); // Вибрация при клике
+            alert("Вы выбрали: " + choice + ". Для PvP матча нужно подключение к серверу через WebSocket.");
+        }
+    </script>
+</body>
+</html>
